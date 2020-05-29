@@ -8,9 +8,9 @@ namespace TP2_Fundamentos
     class Pessoa
     { 
 
-        public string nome { get; set; }
-        public string sobrenome { get; set; }
-        public DateTime aniversario { get; set; }
+        public string Nome { get; set; }
+        public string Sobrenome { get; set; }
+        public DateTime Aniversario { get; set; }
 
 
         public Pessoa()
@@ -20,9 +20,9 @@ namespace TP2_Fundamentos
 
         public Pessoa(string nome, string sobrenome, DateTime aniversario)
         {
-            this.nome = nome;
-            this.sobrenome = sobrenome;
-            this.aniversario = aniversario;
+            this.Nome = nome;
+            this.Sobrenome = sobrenome;
+            this.Aniversario = aniversario;
         }
 
     }

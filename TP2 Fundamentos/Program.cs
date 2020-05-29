@@ -14,37 +14,30 @@ namespace TP2_Fundamentos
 
             while (true)
             {
-
-                Console.WriteLine("Escolha uma das opções a baixo: ");
-                Console.WriteLine("1 - Pesquisar Pessoas");
-                Console.WriteLine("2 - Adicionar Nova Pessoa");
-                Console.WriteLine("Digite qualquer outra tecla para Sair");
-                string opcao = Console.ReadLine();
-                Console.WriteLine("------------------------------------------");
-                Console.WriteLine(" ");
+                string opcao = Menu();
 
                 if (opcao == "1")
                 {
                     Console.WriteLine("Digite o nome, ou parte do nome, da pessoa que deseja encontrar: ");
                     string encontrar = Console.ReadLine();
 
-                    List<Pessoa> resultQuery = lista.Where(x => x.nome.Contains(encontrar)).ToList();
+                    List<Pessoa> resultQuery = lista.Where(x => x.Nome.Contains(encontrar)).ToList();
 
                     int i = 0;
                     foreach (Pessoa pessoa in resultQuery)
                     {
-                        Console.WriteLine(i + " -  Nome: " + pessoa.nome + " " + pessoa.sobrenome);
-                        i += 1;                        
+                        Console.WriteLine(i + " -  Nome: " + pessoa.Nome + " " + pessoa.Sobrenome);
+                        i += 1;
                     }
 
                     Console.Write("Selecione uma das opções para visualizar os dados de uma das pessoas encontradas: ");
                     string escolha = Console.ReadLine();
                     int x = Int16.Parse(escolha);
 
-                    Console.WriteLine("Nome: " + resultQuery[x].nome + " " + resultQuery[x].sobrenome);
-                    Console.WriteLine(resultQuery[x].aniversario);
+                    Console.WriteLine("Nome: " + resultQuery[x].Nome + " " + resultQuery[x].Sobrenome);
+                    Console.WriteLine(resultQuery[x].Aniversario);
 
-                    DateTime niver = resultQuery[x].aniversario;
+                    DateTime niver = resultQuery[x].Aniversario;
 
                     //DateTime niver = new DateTime(2010, 10, 01);
 
@@ -54,7 +47,7 @@ namespace TP2_Fundamentos
                         niver = niver.AddYears(1);
 
                     double dias = DateTime.Now.Date.Subtract(niver).TotalDays;
-                    Console.WriteLine("Faltam " + (dias *-1) + " dias para o seu aniversário");
+                    Console.WriteLine("Faltam " + (dias * -1) + " dias para o seu aniversário");
 
 
                     Console.WriteLine("------------------------------------------");
@@ -69,13 +62,25 @@ namespace TP2_Fundamentos
                     break;
                 }
 
-               
+
 
             }
 
 
 
 
+        }
+
+        private static string Menu()
+        {
+            Console.WriteLine("Escolha uma das opções a baixo: ");
+            Console.WriteLine("1 - Pesquisar Pessoas");
+            Console.WriteLine("2 - Adicionar Nova Pessoa");
+            Console.WriteLine("Digite qualquer outra tecla para Sair");
+            string opcao = Console.ReadLine();
+            Console.WriteLine("------------------------------------------");
+            Console.WriteLine(" ");
+            return opcao;
         }
 
         private static void AddPessoa(List<Pessoa> lista)
@@ -92,8 +97,8 @@ namespace TP2_Fundamentos
             Console.WriteLine(" ");
 
             Console.WriteLine("Os dados abaixo estão corretos?");
-            Console.WriteLine("Nome: " + pessoa.nome + " " + pessoa.sobrenome);
-            Console.WriteLine("Aniversário: " + pessoa.aniversario);
+            Console.WriteLine("Nome: " + pessoa.Nome + " " + pessoa.Sobrenome);
+            Console.WriteLine("Aniversário: " + pessoa.Aniversario);
             Console.WriteLine("1 - SIM");
             Console.WriteLine("2 - NÃO");
             string escolha = Console.ReadLine();
